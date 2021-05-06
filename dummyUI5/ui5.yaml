@@ -44,5 +44,6 @@ builder:
     configuration:
       archiveName: webapp
       includeDependencies: true
+      onlyZip: true
       additionalFiles:
       - xs-app.json
