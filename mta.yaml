@@ -13,8 +13,8 @@ modules:
     build-result: resources
     requires:
     - artifacts:
-      - dummyUI5.zip
-      name: dummyUI5
+      - dummyUI5A.zip
+      name: dummyUI5A
       target-path: resources/
 - name: dummy-ui5-tooling
   type: html5
