@@ -6,11 +6,9 @@ framework:
   name: SAPUI5
   version: "1.89.0"
   libraries:
-    - name: sap.f
     - name: sap.m
     - name: sap.ui.core
-    - name: sap.ui.table
-    - name: sap.ui.unified
+    - name: sap.ui.comp
 server: # with ui5 serve we start the server deamon and he injects express with these custom middlewares
   customMiddleware:
   - name: fiori-tools-proxy # part of @sap/ux-ui5-tooling toolchain for ui5-tooling
