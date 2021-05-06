@@ -42,7 +42,7 @@ builder:
   - name: ui5-task-zipper
     afterTask: generateCachebusterInfo
     configuration:
-      archiveName: dummyUI5
+      archiveName: webapp
       includeDependencies: true
       additionalFiles:
       - xs-app.json

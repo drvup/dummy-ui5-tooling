@@ -7,7 +7,7 @@ sap.ui.define([
 
 	Opa5.extendConfig({
 		arrangements: new Startup(),
-		viewNamespace: "ssolandingpage.view.",
+		viewNamespace: "dummyUI5.view.",
 		autoWait: true
 	});
 });

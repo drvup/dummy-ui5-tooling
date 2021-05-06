@@ -9,7 +9,6 @@
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
-    "resources": "resources.json",
     "ach": "ach"
   },
   "sap.ui": {
@@ -32,7 +31,7 @@
   "sap.ui5": {
     "flexEnabled": false,
     "rootView": {
-      "viewName": "ssolandingpage.view.main",
+      "viewName": "dummyUI5.view.main",
       "type": "XML",
       "async": true,
       "id": "main"
@@ -53,7 +52,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "ssolandingpage.i18n.i18n"
+          "bundleName": "dummyUI5.i18n.i18n"
         }
       },
       "apps": {
@@ -75,7 +74,7 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "ssolandingpage.view",
+        "viewPath": "dummyUI5.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false

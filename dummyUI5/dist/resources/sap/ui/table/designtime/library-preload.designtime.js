@@ -1,0 +1,4 @@
+//@ui5-bundle sap/ui/table/designtime/library-preload.designtime.js
+sap.ui.predefine("sap/ui/table/designtime/AnalyticalTable.designtime",[],function(){"use strict";return{aggregations:{columns:{domRef:".sapUiTableCHA"},hScroll:{ignore:false,domRef:function(e){return e.$("hsb").get(0)}},vScroll:{ignore:false,domRef:function(e){return e.$("vsb").get(0)}}}}});
+sap.ui.predefine("sap/ui/table/designtime/Table.designtime",function(){"use strict";return{domRef:function(e){if(e._getRowMode().isA("sap.ui.table.rowmodes.AutoRowMode")){return e.$("sapUiTableCnt").get(0)}return e.getDomRef()},aggregations:{columns:{domRef:".sapUiTableCHA"},rows:{ignore:true},hScroll:{ignore:false,domRef:function(e){return e.$("hsb").get(0)}},scrollContainers:[{domRef:function(e){return e.$("sapUiTableCnt").get(0)},aggregations:["rows"]}]}}});
+sap.ui.predefine("sap/ui/table/designtime/library.designtime",[],function(){"use strict";return{}});
