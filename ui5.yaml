@@ -1,0 +1,48 @@
+specVersion: '2.3'
+metadata:
+  name: delete-me
+type: application
+framework:
+  name: SAPUI5
+  version: "1.89.0"
+  libraries:
+    - name: sap.f
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ui.table
+    - name: sap.ui.unified
+server: # with ui5 serve we start the server deamon and he injects express with these custom middlewares
+  customMiddleware:
+  - name: fiori-tools-proxy # part of @sap/ux-ui5-tooling toolchain for ui5-tooling
+    afterMiddleware: compression
+    configuration:
+      ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+      ui5:
+        path: 
+        - /resources
+        - /test-resources
+        url: https://ui5.sap.com
+        version:  # The UI5 version, for instance, 1.78.1. Empty means latest version
+  - name: fiori-tools-appreload # part of @sap/ux-ui5-tooling toolchain for ui5-tooling
+    afterMiddleware: compression
+    configuration:
+     port: 35729
+     path: webapp
+builder:
+  resources:
+    excludes:
+      - "/test/**"
+      - "/localService/**"
+  customTasks:
+  - name: webide-extension-task-updateManifestJson
+    beforeTask: generateManifestBundle
+    configuration:
+      appFolder: webapp
+      destDir: dist
+  - name: ui5-task-zipper
+    afterTask: generateCachebusterInfo
+    configuration:
+      archiveName: ssolandingpage
+      includeDependencies: true
+      additionalFiles:
+      - xs-app.json
