@@ -1,0 +1,37 @@
+_schema-version: "3.2"
+ID: dummy-ui5-tooling
+version: 0.0.1
+modules:
+- name: dummy-ui5-tooling-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: dummy-ui5-tooling-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - dummyUI5.zip
+      name: dummyUI5
+      target-path: resources/
+- name: dummy-ui5-tooling
+  type: html5
+  path: dummyUI5
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build
+    supported-platforms: []
+resources:
+- name: dummy-ui5-tooling-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: sso-landingpage-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo

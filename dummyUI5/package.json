@@ -1,10 +1,13 @@
 {
-  "name": "delete-me",
+  "name": "dummy-ui5-tooling",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "fiori run --open 'index.html'",
+    "start-local": "ui5 serve",
+    "build": "ui5 build --all",
+    "deploy": "fiori verify"
   },
   "author": "",
   "license": "ISC",
