@@ -18,12 +18,14 @@
     "@ui5/logger": "^2.0.1",
     "mbt": "^1.0.15",
     "rimraf": "3.0.2",
+    "ui5-middleware-simpleproxy": "^0.7.2",
     "ui5-task-zipper": "^0.4.3"
   },
   "ui5": {
     "dependencies": [
       "@sap/ux-ui5-tooling",
       "@sap/ui5-builder-webide-extension",
+      "ui5-middleware-simpleproxy",
       "ui5-task-zipper",
       "mbt"
     ]
