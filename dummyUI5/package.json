@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ui5 serve --open 'index.html'",
     "start-local": "ui5 serve",
-    "build": "ui5 build --all",
+    "build": "ui5 build --all"
   },
   "author": "Cedric Heisel, CIT Focus",
   "license": "ISC",
