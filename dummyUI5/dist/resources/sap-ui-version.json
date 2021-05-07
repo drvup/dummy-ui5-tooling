@@ -1,0 +1,59 @@
+{
+	"name": "dummy-ui5-tooling",
+	"version": "1.0.0",
+	"buildTimestamp": "202105071317",
+	"scmRevision": "",
+	"libraries": [
+		{
+			"name": "sap.m",
+			"version": "1.89.1",
+			"buildTimestamp": "202105071317",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.core",
+			"version": "1.89.1",
+			"buildTimestamp": "202105071317",
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.ui.layout",
+			"version": "1.89.1",
+			"buildTimestamp": "202105071317",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.unified",
+			"version": "1.89.1",
+			"buildTimestamp": "202105071317",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		}
+	]
+}

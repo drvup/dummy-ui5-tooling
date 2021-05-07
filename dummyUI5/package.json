@@ -2,14 +2,13 @@
   "name": "dummy-ui5-tooling",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "webapp/index.html",
   "scripts": {
-    "start": "fiori run --open 'index.html'",
+    "start": "ui5 serve --open 'index.html'",
     "start-local": "ui5 serve",
     "build": "ui5 build --all",
-    "deploy": "fiori verify"
   },
-  "author": "",
+  "author": "Cedric Heisel, CIT Focus",
   "license": "ISC",
   "devDependencies": {
     "@sap/ui5-builder-webide-extension": "1.0.x",
