@@ -17,6 +17,11 @@ server: # with ui5 serve we start the server deamon and he injects express with 
     afterMiddleware: compression
     configuration:
       baseUri: https://sapui5.hana.ondemand.com/resources/
+  - name: fiori-tools-appreload
+    afterMiddleware: compression
+    configuration:
+      port: 35729
+      path: webapp      
 builder:
   resources:
     excludes:
