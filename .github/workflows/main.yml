@@ -67,6 +67,6 @@ jobs:
           cf_space: ${{ secrets.CF_SPACE }}
           command: |
             install-plugin multiapps -f
-            deploy mta_archives/$GITHUB_RUN_ID.mtar -f
+            cf deploy mta_archives/$GITHUB_RUN_ID.mtar -f
 
         #  cf login -u $CIT_TRIAL_CF_USER -p $CIT_TRIAL_CF_PW -a $CIT_TRIAL_CF_API -o $CIT_TRIAL_CF_ORG -s $CF_TRIAL_CF_SPACE && 
