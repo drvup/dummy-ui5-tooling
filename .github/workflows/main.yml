@@ -1,0 +1,66 @@
+# CIT Focus Github-Action pipeline
+
+name: CIT-Focus-CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the onGithub branch
+  push:
+    branches: [ onGithub ]
+  pull_request:
+    branches: [ onGithub ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:  
+  build-mta-job:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Download the mbt build tool from github
+        run: |
+          wget https://github.com/SAP/cloud-mta-build-tool/releases/download/v1.1.0/cloud-mta-build-tool_1.1.0_Linux_amd64.tar.gz 
+          tar xvzf cloud-mta-build-tool_1.1.0_Linux_amd64.tar.gz 
+          sudo cp mbt /usr/local/bin/
+
+      - name: Create the mtar file
+        run: |
+          echo Create the mtar file now
+          mbt build -p=cf --mtar=$GITHUB_RUN_ID.mtar
+      
+      # upload the result as artifact
+      - name: Upload artifact
+        uses: actions/upload-artifacts@v2
+        with:
+          name: mtar
+          path: mta_archives/$GITHUB_RUN_ID.mtar
+          retention-days: 14
+
+  deploy-mta-to-cf-job:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    # define the dependency to the build step
+    needs: [build-mta-job]
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: mtar
+    
+      - name: Install the multipapps cf plugin
+        run: |
+          cf install-plugin multiapps -f    
+
+      - name: Deploy the mtar file to CF
+        run: |
+          cf login -u $CIT_TRIAL_CF_USER -p $CIT_TRIAL_CF_PW -a $CIT_TRIAL_CF_API -o $CIT_TRIAL_CF_ORG -s $CF_TRIAL_CF_SPACE && cf deploy mta_archives/$CI_PROJECT_NAME.mtar -f
