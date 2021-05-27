@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: mtar
-          path: mta_archives/$GITHUB_RUN_ID.mtar
+          path: mta_archives/*.mtar
           retention-days: 14
 
   deploy-mta-to-cf-job:
@@ -63,4 +63,4 @@ jobs:
 
       - name: Deploy the mtar file to CF
         run: |
-          cf login -u $CIT_TRIAL_CF_USER -p $CIT_TRIAL_CF_PW -a $CIT_TRIAL_CF_API -o $CIT_TRIAL_CF_ORG -s $CF_TRIAL_CF_SPACE && cf deploy mta_archives/$CI_PROJECT_NAME.mtar -f
+          cf login -u $CIT_TRIAL_CF_USER -p $CIT_TRIAL_CF_PW -a $CIT_TRIAL_CF_API -o $CIT_TRIAL_CF_ORG -s $CF_TRIAL_CF_SPACE && cf deploy mta_archives/$GITHUB_RUN_ID.mtar -f
