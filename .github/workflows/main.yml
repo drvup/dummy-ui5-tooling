@@ -37,7 +37,7 @@ jobs:
       
       # upload the result as artifact
       - name: Upload artifact
-        uses: actions/upload-artifacts@v2
+        uses: actions/upload-artifact@v2
         with:
           name: mtar
           path: mta_archives/$GITHUB_RUN_ID.mtar
