@@ -57,10 +57,16 @@ jobs:
         with:
           name: mtar
     
-      - name: Install the multipapps cf plugin
-        run: |
-          cf install-plugin multiapps -f    
+      - name: Use cf-cli action to deploy
+        uses: citizen-of-planet-earth/cf-cli-action@master
+        with:
+          cf_api: https://api.cf.eu10.hana.ondemand.com
+          cf_username: ${{ secrets.CF_USER }}
+          cf_password: ${{ secrets.CF_PASSWORD }}
+          cf_org: ${{ secrets.CF_ORG }}
+          cf_space: ${{ secrets.CF_SPACE }}
+          command: |
+            install-plugin multiapps -f
+            deploy mta_archives/$GITHUB_RUN_ID.mtar -f
 
-      - name: Deploy the mtar file to CF
-        run: |
-          cf login -u $CIT_TRIAL_CF_USER -p $CIT_TRIAL_CF_PW -a $CIT_TRIAL_CF_API -o $CIT_TRIAL_CF_ORG -s $CF_TRIAL_CF_SPACE && cf deploy mta_archives/$GITHUB_RUN_ID.mtar -f
+        #  cf login -u $CIT_TRIAL_CF_USER -p $CIT_TRIAL_CF_PW -a $CIT_TRIAL_CF_API -o $CIT_TRIAL_CF_ORG -s $CF_TRIAL_CF_SPACE && 
