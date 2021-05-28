@@ -56,6 +56,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: mtar
+          path: mta_archives
     
       - name: Use cf-cli action to deploy
         uses: citizen-of-planet-earth/cf-cli-action@master
